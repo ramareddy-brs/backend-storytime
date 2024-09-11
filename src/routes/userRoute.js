@@ -13,7 +13,11 @@ import {
   saveSpotifyStory,
   removeSpotifyStory,
   getSpotifyStories,
-
+  getDevice,
+  resendVerificationCode,
+  verifyCode,
+  sendPasswordVerificationCode,
+  resetPasswordFromMobile
 } from "../controllers/userController.js";
 import { checkToken } from "../middleware/authMiddleware.js";
 
@@ -32,5 +36,13 @@ router.post("/resetpassword/:token", resetPassword);
 router.post("/savestory", checkToken, saveSpotifyStory);
 router.delete("/removestory", checkToken, removeSpotifyStory);
 router.get("/library", checkToken, getSpotifyStories);
+
+
+// mobile
+router.get("/useragent", getDevice) 
+router.post("/resendcode", resendVerificationCode)
+router.post("/verifycode", verifyCode)
+router.post("/forgotpasswordmobile", sendPasswordVerificationCode)
+router.post("/resetpasswordmobile", resetPasswordFromMobile)
 
 export default router;
